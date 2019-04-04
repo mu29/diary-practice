@@ -1,16 +1,14 @@
 import React from 'react'
 import {
-  Text,
   StyleSheet,
 } from 'react-native'
 import { SafeAreaView } from 'react-navigation'
+import ViewHeader from '../components/ViewHeader'
 
 const ViewScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <Text>
-        조회 화면
-      </Text>
+      <ViewHeader />
     </SafeAreaView>
   )
 }
