@@ -45,11 +45,27 @@ export default class App extends React.Component {
       date: '2019년 4월 5일',
       bookmarked: false,
     }],
+    id: 3,
   }
 
   render() {
     return (
-      <ContextProvider articles={this.state.articles}>
+      <ContextProvider
+        articles={this.state.articles}
+        create={(title, content) => {
+          const now = new Date()
+          this.setState({
+            articles: [{
+              id: this.state.id,
+              title: title,
+              content: content,
+              date: `${now.getFullYear()}년 ${now.getMonth() + 1}월 ${now.getDate()}일`,
+              bookmarked: false,
+            }].concat(this.state.articles),
+            id: this.state.id + 1,
+          })
+        }}
+      >
         <Navigator />
       </ContextProvider>
     );
