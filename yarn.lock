@@ -4911,6 +4911,11 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
+react-simplified-context@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-simplified-context/-/react-simplified-context-1.0.0.tgz#8ded7e2db167c8b81bf12e21697cca7dff7efc76"
+  integrity sha512-tACDAMDG5jL/HlViosIPi8B+n0cYPa7V8+ZTozNeW7AMJNtAzqKywBgsCqDfok+jvtJtoB4vIOZopktrUkW8ow==
+
 react-timer-mixin@^0.13.2:
   version "0.13.4"
   resolved "https://registry.yarnpkg.com/react-timer-mixin/-/react-timer-mixin-0.13.4.tgz#75a00c3c94c13abe29b43d63b4c65a88fc8264d3"
