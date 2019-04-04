@@ -1,4 +1,5 @@
 import React from 'react'
+import { AsyncStorage } from 'react-native'
 import { ContextProvider } from 'react-simplified-context'
 import Navigator from './Navigator'
 
@@ -48,6 +49,16 @@ export default class App extends React.Component {
     id: 3,
   }
 
+  componentWillMount() {
+    AsyncStorage.getItem('@diary:state').then((state) => {
+      this.setState(JSON.parse(state))
+    })
+  }
+
+  save = () => {
+    AsyncStorage.setItem('@diary:state', JSON.stringify(this.state))
+  }
+
   render() {
     return (
       <ContextProvider
@@ -63,20 +74,20 @@ export default class App extends React.Component {
               bookmarked: false,
             }].concat(this.state.articles),
             id: this.state.id + 1,
-          })
+          }, this.save)
         }}
         update={(id, title, content) => {
           const newArticles = [...this.state.articles]
           const index = newArticles.findIndex(a => a.id === id)
           newArticles[index].title = title
           newArticles[index].content = content
-          this.setState({ articles: newArticles })
+          this.setState({ articles: newArticles }, this.save)
         }}
         toggle={(id) => {
           const newArticles = [...this.state.articles]
           const index = newArticles.findIndex(a => a.id === id)
           newArticles[index].bookmarked = !newArticles[index].bookmarked
-          this.setState({ articles: newArticles })
+          this.setState({ articles: newArticles }, this.save)
         }}
       >
         <Navigator />
