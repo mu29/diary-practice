@@ -1,11 +1,14 @@
 import React from 'react'
 import {
   createBottomTabNavigator,
+  createStackNavigator,
   createAppContainer,
 } from 'react-navigation'
 import { Ionicons } from '@expo/vector-icons'
+
 import ListScreen from './screens/ListScreen'
 import BookmarkScreen from './screens/BookmarkScreen'
+import EditScreen from './screens/EditScreen'
 
 const TabNavigator = createBottomTabNavigator({
   List: {
@@ -17,6 +20,15 @@ const TabNavigator = createBottomTabNavigator({
       tabBarLabel: '목록',
     }
   },
+  AddButton: {
+    screen: () => null,
+    navigationOptions: {
+      tabBarIcon: ({ tintColor }) => {
+        return (<Ionicons name="ios-add-circle" size={36} color="#DA5746" />)
+      },
+      tabBarOnPress: ({ navigation }) => navigation.navigate('Edit'),
+    }
+  },
   Bookmark: {
     screen: BookmarkScreen,
     navigationOptions: {
@@ -24,7 +36,7 @@ const TabNavigator = createBottomTabNavigator({
         return (<Ionicons name="md-heart" size={25} color={tintColor} />)
       },
     }
-  }
+  },
 }, {
   tabBarOptions: {
     activeTintColor: '#424242',
@@ -35,4 +47,13 @@ const TabNavigator = createBottomTabNavigator({
   }
 })
 
-export default createAppContainer(TabNavigator)
+const AppNavigator = createStackNavigator({
+  Edit: EditScreen,
+  Tab: TabNavigator,
+}, {
+  initialRouteName: 'Tab',
+  mode: 'modal',
+  headerMode: 'none',
+})
+
+export default createAppContainer(AppNavigator)
