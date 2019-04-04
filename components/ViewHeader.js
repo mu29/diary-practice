@@ -10,6 +10,8 @@ import { Ionicons } from '@expo/vector-icons'
 
 const ViewHeader = ({
   title,
+  bookmarked,
+  bookmark,
   navigation,
 }) => {
   return (
@@ -26,8 +28,9 @@ const ViewHeader = ({
       </Text>
       <TouchableOpacity
         activeOpacity={0.8}
+        onPress={bookmark}
       >
-        <Ionicons name="md-heart-empty" size={24} color="#DA5746" />
+        <Ionicons name={bookmarked ? 'md-heart' : 'md-heart-empty'} size={24} color="#DA5746" />
       </TouchableOpacity>
     </View>
   )

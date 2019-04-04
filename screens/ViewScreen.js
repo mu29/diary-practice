@@ -12,13 +12,18 @@ import ViewHeader from '../components/ViewHeader'
 const ViewScreen = ({
   navigation,
   articles,
+  toggle,
 }) => {
   const id = navigation.getParam('id', -1)
   const article = articles.find(a => a.id === id)
 
   return (
     <SafeAreaView style={styles.container}>
-      <ViewHeader title={article.title} />
+      <ViewHeader
+        title={article.title}
+        bookmark={() => { toggle(id) }}
+        bookmarked={article.bookmarked}
+      />
       <ScrollView>
         <TouchableOpacity
           activeOpacity={0.8}
