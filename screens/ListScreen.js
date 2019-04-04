@@ -4,13 +4,12 @@ import {
   Text,
   StyleSheet,
 } from 'react-native'
+import Header from '../components/Header'
 
 const ListScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <Text>
-        목록 화면
-      </Text>
+      <Header title="나의 글" />
     </SafeAreaView>
   )
 }
