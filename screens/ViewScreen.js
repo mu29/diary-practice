@@ -22,7 +22,7 @@ const ViewScreen = ({
       <ScrollView>
         <TouchableOpacity
           activeOpacity={0.8}
-          onLongPress={() => navigation.navigate('Edit')}
+          onLongPress={() => navigation.navigate('Edit', { id: id })}
         >
           <Text style={styles.content}>
             {article.content}
