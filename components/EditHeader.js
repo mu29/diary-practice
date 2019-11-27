@@ -4,6 +4,8 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
+  Platform,
+  StatusBar,
 } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import { Ionicons } from '@expo/vector-icons'
@@ -42,6 +44,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingLeft: 16,
     paddingRight: 16,
+    paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
   },
   done: {
     fontSize: 16,
